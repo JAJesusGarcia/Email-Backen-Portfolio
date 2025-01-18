@@ -8,6 +8,7 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+//DEPURAR
 console.log('Variables de entorno cargadas:', {
   EMAIL_HOST: process.env.EMAIL_HOST,
   EMAIL_PORT: process.env.EMAIL_PORT,
