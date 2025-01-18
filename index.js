@@ -65,8 +65,8 @@ const validateInput = (data) => {
 
 // Configuración de nodemailer
 const transporter = nodemailer.createTransport({
-  host: process.env.EMAIL_HOST || 'smtp.gmail.com', // valor por defecto como respaldo
-  port: process.env.EMAIL_PORT || 587,
+  host: process.env.EMAIL_HOST,
+  port: process.env.EMAIL_PORT,
   secure: false,
   auth: {
     user: process.env.EMAIL_USER,
