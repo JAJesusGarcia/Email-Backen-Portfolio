@@ -8,6 +8,13 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+console.log('Variables de entorno cargadas:', {
+  EMAIL_HOST: process.env.EMAIL_HOST,
+  EMAIL_PORT: process.env.EMAIL_PORT,
+  EMAIL_USER: process.env.EMAIL_USER,
+  NODE_ENV: process.env.NODE_ENV,
+});
+
 // Configuración de CORS
 app.use(
   cors({
@@ -57,13 +64,19 @@ const validateInput = (data) => {
 
 // Configuración de nodemailer
 const transporter = nodemailer.createTransport({
-  host: process.env.EMAIL_HOST,
-  port: process.env.EMAIL_PORT,
+  host: process.env.EMAIL_HOST || 'smtp.gmail.com', // valor por defecto como respaldo
+  port: process.env.EMAIL_PORT || 587,
   secure: false,
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
   },
+});
+
+console.log('Configuración del transporter:', {
+  host: process.env.EMAIL_HOST,
+  port: process.env.EMAIL_PORT,
+  user: process.env.EMAIL_USER,
 });
 
 // Verificar configuración del email al inicio
